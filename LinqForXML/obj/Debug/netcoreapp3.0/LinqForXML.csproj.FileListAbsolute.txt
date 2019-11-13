@@ -1,0 +1,11 @@
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.exe
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.deps.json
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.runtimeconfig.json
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.runtimeconfig.dev.json
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.dll
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.pdb
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.csprojAssemblyReference.cache
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.AssemblyInfoInputs.cache
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.AssemblyInfo.cs
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.dll
+C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.pdb
