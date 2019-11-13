@@ -2,6 +2,7 @@
 using LinqForXML.datas;
 using LinqForXML.queries;
 using LinqForXML.utils;
+using LinqForXML.xmlcreates;
 
 namespace LinqForXML
 {
@@ -33,6 +34,9 @@ namespace LinqForXML
             new QueryForGetDataAcademicDiscipline(academicDisciplines).TotalHoursForTeachersSubjects("Сидоров Сидор Сидорович");
             new QueryForGetDataAcademicDiscipline(academicDisciplines).AllDisciplinesGroupedBySpecialityId(5);
             new QueryForGetDataAcademicDiscipline(academicDisciplines).DisciplineSemesterSpecialityFaculty();
+            
+            new XmlCreate().XmlConstruct();
+            new XmlCreate(itemInStock).GenerateXml();
         }
     }
 }
