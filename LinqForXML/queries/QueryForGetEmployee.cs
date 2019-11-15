@@ -70,15 +70,11 @@ namespace LinqForXML.queries
             Console.WriteLine($"\n2. Сотрудники {sex} пола, занимающие должность: {position}");
             if (_employee != null)
             {
-//                var employees = _employee
-//                    .Descendants("employee")
-//                    .Where(e => e.Element("sex")?.Value == sex && e.Element("position")?.Value == position)
-//                    .Select(e => e);
-                var employees = from es in _employee.Descendants("employee")
-                    from s in es.Elements("personal")
-                    from p in es.Elements("department")
-                    where s.Element("sex")?.Value == sex && p.Element("position")?.Value == position
-                    select s;
+                var employees = _employee.Descendants("employee")
+                    .SelectMany(es => es.Elements("personal"), (es, s) => new {es, s})
+                    .SelectMany(@t => @t.es.Elements("department"), (@t, p) => new {@t, p})
+                    .Where(@t => @t.@t.s.Element("sex")?.Value == sex && @t.p.Element("position")?.Value == position)
+                    .Select(@t => @t.@t.s);
                 var countEmployee = employees.Count();
                 Console.WriteLine($"- {countEmployee}");
             }
@@ -91,23 +87,26 @@ namespace LinqForXML.queries
         public void FindEmployeeWithMoreSalary(double salary)
         {
             Console.WriteLine($"\n3. Сотрудники с окладом > {salary}");
-            var employees = _employee
-                .Descendants("employee")
-                .Where(employee => Convert.ToDouble(employee.Element("salary")?.Value) > salary)
-                .GroupBy(employee => employee.Element("department")?.Value);
-            foreach (var employee in employees)
+            if (_employee != null)
             {
-//                Console.WriteLine($"- {employee.Key}");
-                foreach (var element in employee)
+                var employees = _employee
+                    .Descendants("employee")
+                    .Where(employee => Convert.ToDouble(employee.Element("salary")?.Value) > salary)
+                    .GroupBy(employee => employee.Element("department")?.Value);
+                foreach (var employee in employees)
                 {
-                    Console.WriteLine(
-                        "- " +
-                        $"{element.Element("last_name")?.Value} " +
-                        $"{element.Element("first_name")?.Value} " +
-                        $"{element.Element("patronymic")?.Value} " +
-                        $"{element.Element("salary")?.Value} " +
-                        $"{element.Element("department")?.Value}"
-                    );
+//                Console.WriteLine($"- {employee.Key}");
+                    foreach (var element in employee)
+                    {
+                        Console.WriteLine(
+                            "- " +
+                            $"{element.Element("last_name")?.Value} " +
+                            $"{element.Element("first_name")?.Value} " +
+                            $"{element.Element("patronymic")?.Value} " +
+                            $"{element.Element("salary")?.Value} " +
+                            $"{element.Element("department")?.Value}"
+                        );
+                    }
                 }
             }
         }
