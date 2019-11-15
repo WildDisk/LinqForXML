@@ -129,13 +129,12 @@ namespace LinqForXML.queries
 //                    }
 //                );
             var employeePlaces = from es in _employee.Descendants("employee")
-                from pos in es.Elements("position")
-                from dep in es.Elements("department")
+                from e in es.Elements("department")
                 join d in departmentXml.Elements("department")
-                    on dep.Attribute("department_id")?.Value equals d.Attribute("id")?.Value
+                    on e.Attribute("department_id")?.Value equals d.Attribute("id")?.Value
                 select new
                 {
-                    position = pos.Element("position")?.Value,
+                    position = e.Element("position")?.Value,
                     department = d.Element("department_name")?.Value,
                     employeePlaces = d.Element("employee_places")?.Value
                 };

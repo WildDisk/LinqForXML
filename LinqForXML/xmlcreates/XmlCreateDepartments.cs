@@ -35,9 +35,9 @@ namespace LinqForXML.xmlcreates
                     new XElement("birthday", e.Birthday),
                     new XElement("salary", e.Salary,
                         new XAttribute("unit", "руб.")),
-                    new XElement("position", e.Position),
                     new XElement("department",
-                        new XAttribute("department_id", e.DepartmentId)
+                        new XAttribute("department_id", e.DepartmentId),
+                        new XElement("position", e.Position)
                     )
                 )
             );
