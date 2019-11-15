@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using LinqForXML.datas;
 using LinqForXML.queries;
 using LinqForXML.utils;
@@ -11,10 +12,14 @@ namespace LinqForXML
         static void Main()
         {
             Console.Title = "Выполнение запросов LINQ к массиву обьектнов";
-            
+
             Product[] itemInStock = new InitializeDataProduct().InitializeDataProducts();
             AcademicDiscipline[] academicDisciplines = new InitializeDataAcademicDiscipline().Disciplines();
-            
+//            XDocument xDocument = XDocument.Load("komUslugi.xml");
+            Employee[] employees = new InitializeDataEmployee().Employees();
+
+            #region Работа с запросами LINQ
+
             Console.WriteLine("******* Результаты запросов LINQ *******");
 //            new QueryForGetDataProduct(itemInStock).GetAllProducts();
 //            new QueryForGetDataProduct(itemInStock).GetAllNames();
@@ -26,7 +31,7 @@ namespace LinqForXML
 //            new QueryForGetDataProduct(itemInStock).GetSumPrice();
 //            new QueryForGetDataProduct(itemInStock).GetNameMaker();
 //            new QueryForGetDataProduct(itemInStock).GetProdBaltprom();
-            
+
             new QueryForGetDataAcademicDiscipline(academicDisciplines).DisciplineInSemester(7);
             new QueryForGetDataAcademicDiscipline(academicDisciplines).DisciplineWithControllingForm("Экзамен");
             new QueryForGetDataAcademicDiscipline(academicDisciplines).NumbersOfDisciplineWithCountOfHours(12, 42);
@@ -34,9 +39,34 @@ namespace LinqForXML
             new QueryForGetDataAcademicDiscipline(academicDisciplines).TotalHoursForTeachersSubjects("Сидоров Сидор Сидорович");
             new QueryForGetDataAcademicDiscipline(academicDisciplines).AllDisciplinesGroupedBySpecialityId(5);
             new QueryForGetDataAcademicDiscipline(academicDisciplines).DisciplineSemesterSpecialityFaculty();
+            #endregion
+
+//            
+//            new XmlCreate().XmlConstruct();
+//            new XmlCreate(itemInStock).GenerateXml();
+
+//            new QueryForParseDataXml(xDocument).GetD();
+//            new QueryForParseDataXml(xDocument).PersonalData();
+//            new QueryForParseDataXml(xDocument).WaterAndElectricity();
+//            new QueryForParseDataXml(xDocument).ApartmentsData();
+//            new QueryForParseDataXml(xDocument).NumApartments();
+//            new QueryForParseDataXml(xDocument).Apartments30M();
+
+            #region Работа с запросами LINQ из XML
             
-            new XmlCreate().XmlConstruct();
-            new XmlCreate(itemInStock).GenerateXml();
+            Console.WriteLine("\n******* Результаты запросов LINQ из XML *******\n");
+            
+            new XmlCreateDepartments(employees).GenerateXml();
+            XDocument xDocumentEmployee = XDocument.Load("employee.xml");
+            
+            new QueryForGetEmployee(xDocumentEmployee).All();
+            new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithBirthday("1986.01.22");
+            new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithSexAndPosition("Муж.", "Начальник отдела");
+            new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithMoreSalary(25000);
+            new QueryForGetEmployee(xDocumentEmployee).ListPositionsWithDepartmentName();
+            new QueryForGetEmployee(xDocumentEmployee).FindEmployeeSmallerSalary(30000);
+            #endregion
+
         }
     }
 }
