@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using LinqForXML.datas;
 using LinqForXML.utils;
 using LinqForXML.xmlcreates;
@@ -69,10 +70,15 @@ namespace LinqForXML.queries
             Console.WriteLine($"\n2. Сотрудники {sex} пола, занимающие должность: {position}");
             if (_employee != null)
             {
-                var employees = _employee
-                    .Descendants("employee")
-                    .Where(e => e.Element("sex")?.Value == sex && e.Element("position")?.Value == position)
-                    .Select(e => e);
+//                var employees = _employee
+//                    .Descendants("employee")
+//                    .Where(e => e.Element("sex")?.Value == sex && e.Element("position")?.Value == position)
+//                    .Select(e => e);
+                var employees = from es in _employee.Descendants("employee")
+                    from s in es.Elements("personal")
+                    from p in es.Elements("department")
+                    where s.Element("sex")?.Value == sex && p.Element("position")?.Value == position
+                    select s;
                 var countEmployee = employees.Count();
                 Console.WriteLine($"- {countEmployee}");
             }
@@ -114,42 +120,51 @@ namespace LinqForXML.queries
             Department[] departments = new InitializeDataDepartment().Departments();
             XElement departmentXml = new XmlCreateDepartments(departments).GenerateTmpXml();
             Console.WriteLine("\n4. Список должностей с указанием отдела");
-//            var employeePlaces = _employee
-//                .Descendants("employee")
-//                .SelectMany(es =>
-//                    es.Elements("position"), (es, e) => new {es, e})
-//                .Join(departmentXml.Elements("department"),
-//                    @t => @t.e.Attribute("department_id")?.Value,
-//                    d => d.Attribute("id")?.Value,
-//                    (@t, d) => new
-//                    {
-//                        position = @t.e.Element("last_name")?.Value,
-//                        department = d.Element("department_name")?.Value,
-//                        employeePlaces = d.Element("employee_places")?.Value
-//                    }
-//                );
-            var employeePlaces = from es in _employee.Descendants("employee")
-                from e in es.Elements("department")
-                join d in departmentXml.Elements("department")
-                    on e.Attribute("department_id")?.Value equals d.Attribute("id")?.Value
-                select new
-                {
-                    position = e.Element("position")?.Value,
-                    department = d.Element("department_name")?.Value,
-                    employeePlaces = d.Element("employee_places")?.Value
-                };
-            Console.WriteLine(
-                $"|{"Должность",25}" +
-                $"|{"Название отдела",40}" +
-                $"|{"Количество мест в отделе",25}|"
-            );
-            foreach (var employeePlace in employeePlaces)
+            if (_employee != null)
             {
+                var employeePlaces = _employee
+                    .Descendants("employee")
+                    .SelectMany(es =>
+                        es.Elements("department"), (es, e) => new {es, e})
+                    .Join(departmentXml.Elements("department"),
+                        @t => @t.e.Attribute("department_id")?.Value,
+                        d => d.Attribute("id")?.Value,
+                        (@t, d) => new
+                        {
+                            position = @t.e.Element("position")?.Value,
+                            department = d.Element("department_name")?.Value,
+                            employeePlaces = d.Element("employee_places")?.Value
+                        });
                 Console.WriteLine(
-                    $"|{employeePlace.position,25}" +
-                    $"|{employeePlace.department,40}" +
-                    $"|{employeePlace.employeePlaces,25}|"
+                    $"|{"Должность",25}" +
+                    $"|{"Название отдела",40}" +
+                    $"|{"Количество мест в отделе",25}|"
                 );
+                foreach (var employeePlace in employeePlaces)
+                {
+                    Console.WriteLine(
+                        $"|{employeePlace.position,25}" +
+                        $"|{employeePlace.department,40}" +
+                        $"|{employeePlace.employeePlaces,25}|"
+                    );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Поиск сотрудников с окладом менее salary
+        /// </summary>
+        /// <param name="salary">Оклад</param>
+        public void FindEmployeeSmallerSalary(double salary)
+        {
+            Console.WriteLine($"\n5. Сотрудники с окладом < {salary} руб.: ");
+            if (_employee != null)
+            {
+                var employees = _employee.XPathSelectElements($"//employee[salary<{salary}]");
+                foreach (var employee in employees)
+                {
+                    Console.WriteLine($"- {employee.Value}");
+                }
             }
         }
     }

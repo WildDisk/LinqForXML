@@ -28,10 +28,12 @@ namespace LinqForXML.xmlcreates
             var xmlData = _employees.Select(e =>
                 new XElement("employee",
                     new XAttribute("id", e.EmployeeId),
-                    new XElement("last_name", e.LatName),
-                    new XElement("first_name", e.FirstName),
-                    new XElement("patronymic", e.Patronymic),
-                    new XElement("sex", e.Sex),
+                    new XElement("personal",
+                        new XElement("last_name", e.LatName),
+                        new XElement("first_name", e.FirstName),
+                        new XElement("patronymic", e.Patronymic),
+                        new XElement("sex", e.Sex)
+                    ),
                     new XElement("birthday", e.Birthday),
                     new XElement("salary", e.Salary,
                         new XAttribute("unit", "руб.")),
