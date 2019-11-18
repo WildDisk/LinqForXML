@@ -1,0 +1,70 @@
+﻿<Window x:Class="LinqForXAML.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LinqForXAML"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1260"
+        Loaded="MainWindow_OnLoaded">
+    <Grid Background="#3C3F41">
+        <!-- Описание строк и столбцов -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!-- Панель со списком товаров -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <Label Foreground="#AFB1B3">Список товаров:</Label>
+            <ListBox Background="#2B2B2B" Foreground="#AFB1B3" Name="ListBoxProducts" Height="100" Margin="5" 
+                     SelectionChanged="ListBoxProducts_OnSelectionChanged">
+            </ListBox>
+        </StackPanel>
+        <!-- Панель с текстовым описанием выбранного товара -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <Label Foreground="#AFB1B3">Информация о товаре: </Label>
+            <TextBlock Foreground="#AFB1B3" Name="TextBlockInfo" Text="" Margin="5"/>
+        </StackPanel>
+        <!-- Панель с элементами для выполнения параметрических запросов -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                    Orientation="Vertical">
+            <TextBlock Foreground="#AFB1B3" Padding="5">1. Поиск сотрудников по дате рождения</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="#AFB1B3" Width="100">Дата рождения:</Label>
+                <DatePicker Background="#2B2B2B" Foreground="#AFB1B3" Name="DatePicker" Width="105" Margin="5"></DatePicker>
+                <Button Background="#3C3F41" Foreground="#AFB1B3" Name="Button1" Width="50" Margin="5" Click="Button1_OnClick">Найти</Button>
+            </StackPanel>
+            <TextBlock Foreground="#AFB1B3" Padding="5">2. Количество сотрудников определённого пола, занимающие должность</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="#AFB1B3" Width="35">Пол: </Label>
+                <ComboBox Background="#2B2B2B" Foreground="#AFB1B3" Name="CbSex" Width="120" Margin="5"></ComboBox>
+                <Label Foreground="#AFB1B3" Width="80">Должность: </Label>
+                <ComboBox Background="#2B2B2B" Foreground="#AFB1B3" Name="CbPosition" Width="120" Margin="5"></ComboBox>
+                <Button Background="#3C3F41" Foreground="#AFB1B3" Name="Button2" Width="50" Margin="5" Click="Button2_OnClick">Найти</Button>
+            </StackPanel>
+            <TextBlock Foreground="#AFB1B3" Padding="5">3. Сотрудники с окладом ></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="#AFB1B3" Width="90">Сумма оклада: </Label>
+                <TextBox Background="#2B2B2B" Foreground="#AFB1B3" Name="TbSalary" Width="100" Margin="5"/>
+                <Label Foreground="#AFB1B3" Width="45">руб.</Label>
+                <Button Background="#3C3F41" Foreground="#AFB1B3" Name="Button3" Width="50" Margin="5" Click="Button3_OnClick">Найти</Button>
+            </StackPanel>
+            <TextBlock Foreground="#AFB1B3" Padding="5">4. Перечесление отделов с должностями</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Background="#3C3F41" Foreground="#AFB1B3" Name="Button4" Width="50" Margin="5" Click="Button4_OnClick">Найти</Button>
+            </StackPanel>
+            <TextBlock Foreground="#AFB1B3" Padding="5">5. Сотрудники с окладом меньше...</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="#AFB1B3" Width="90">Сумма оклада: </Label>
+                <TextBox Background="#2B2B2B" Foreground="#AFB1B3" Name="TbSalarySmaller" Width="100" Margin="5"/>
+                <Label Foreground="#AFB1B3" Width="45">руб.</Label>
+                <Button Background="#3C3F41" Foreground="#AFB1B3" Name="Button5" Width="50" Margin="5" Click="Button5_OnClick">Найти</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
