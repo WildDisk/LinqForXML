@@ -22,8 +22,11 @@
             return string.Format(
                 $"Наименование: {Name}\n" +
                 $"Производитель: {ProducedBy}\n" +
-                $"Количество = {NumberInStock} шт.; Вес = {Weight} гр.; Цена = {Price:f2} руб.\n" +
-                $"Код стеллажа: {StoreId}"
+                $"Количество = {NumberInStock} шт.\n" +
+                $"Вес = {Weight} гр.\n" +
+                $"Цена = {Price:f2} руб.\n" +
+                $"Код стеллажа: {StoreId}\n" +
+                $"\n"
             );
         }
     }
