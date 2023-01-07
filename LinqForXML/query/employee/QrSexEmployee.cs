@@ -22,6 +22,12 @@ namespace LinqForXML.query.employee
             _sex = sex;
         }
 
+        public QrSexEmployee(IEnumerable<XElement> elements, string sex)
+        {
+            _xdEmployees = elements;
+            _sex = sex;
+        }
+
         public IEnumerable<XElement> Fetch()
         {
             return _xdEmployees.Where(it => it.Element("personal")?.Element("sex")?.Value == _sex);

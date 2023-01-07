@@ -1,25 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using LinqForXML.query;
 
 namespace LinqForXML.format_answer
 {
     public class EmployeeFormatAnswer
     {
-        private readonly IQuery _query;
+        private readonly IEnumerable<XElement> _xElements;
         private readonly string _comment;
         public EmployeeFormatAnswer(IQuery query, string comment)
         {
-            _query = query;
+            _xElements = query.Fetch();
             _comment = comment;
         }
-        
+
+        public EmployeeFormatAnswer(IEnumerable<XElement> elements, string comment)
+        {
+            _xElements = elements;
+            _comment = comment;
+        }
+
         public override string ToString()
         {
             try
             {
                 var str = $"***** {_comment} *****{Environment.NewLine}";
-                _query.Fetch()
+                _xElements
                     .ToList()
                     .ForEach(it =>
                     {

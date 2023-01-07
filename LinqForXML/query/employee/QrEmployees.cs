@@ -20,6 +20,11 @@ namespace LinqForXML.query.employee
             _xdEmployees = document.Descendants("employee");
         }
 
+        public QrEmployees(IEnumerable<XElement> xdEmployees)
+        {
+            _xdEmployees = xdEmployees;
+        }
+
         public IEnumerable<XElement> Fetch()
         {
             return _xdEmployees.Select(employee => employee);

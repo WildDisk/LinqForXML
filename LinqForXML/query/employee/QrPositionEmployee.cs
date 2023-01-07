@@ -20,6 +20,13 @@ namespace LinqForXML.query.employee
             _xdEmployees = document.Descendants("employee");
             _position = position;
         }
+
+        public QrPositionEmployee(IEnumerable<XElement> elements, string position)
+        {
+            _xdEmployees = elements;
+            _position = position;
+        }
+
         public IEnumerable<XElement> Fetch()
         {
             return _xdEmployees

@@ -39,6 +39,12 @@ namespace LinqForXML.query.employee
             _birthday = birthday;
         }
 
+        public QrBirthdayEmployee(IEnumerable<XElement> elements, string birthday)
+        {
+            _xdEmployees = elements;
+            _birthday = birthday;
+        }
+
         public IEnumerable<XElement> Fetch()
         {
             return _xdEmployees.Where(e => e.Element("birthday")?.Value == _birthday);

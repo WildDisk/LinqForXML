@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Xml.Linq;
+using System.Linq;
 using LinqForXML.data;
 using LinqForXML.format_answer;
 using LinqForXML.model;
-using LinqForXML.queries;
-using LinqForXML.query;
 using LinqForXML.query.employee;
 using LinqForXML.xml;
-using LinqForXML.xmlcreates;
 
 namespace LinqForXML
 {
@@ -16,12 +13,16 @@ namespace LinqForXML
         static void Main()
         {
             Console.Title = "Выполнение запросов LINQ к массиву обьектнов";
+            #region OldLINQ
 
-            Product[] itemInStock = new InitializeDataProduct().InitializeDataProducts();
-            AcademicDiscipline[] academicDisciplines = new InitializeDataAcademicDiscipline().Disciplines();
+            // Product[] itemInStock = new InitializeDataProduct().InitializeDataProducts();
+            // AcademicDiscipline[] academicDisciplines = new InitializeDataAcademicDiscipline().Disciplines();
 //            XDocument xDocument = XDocument.Load("komUslugi.xml");
-            Employee[] employees = new EmployeeData().Employees();
 
+
+            
+
+            
 //             #region Работа с запросами LINQ
 //
 //             Console.WriteLine("******* Результаты запросов LINQ *******");
@@ -73,7 +74,9 @@ namespace LinqForXML
 
             // new XmlCreateDepartments(employees).GenerateXml();
             // XDocument xDocumentEmployee = XDocument.Load("employee.xml");
+            #endregion
 
+            Employee[] employees = new EmployeeData().Employees();
             Console.WriteLine(
                 new EmployeeFormatAnswer(
                     new QrBirthdayEmployee(
@@ -98,6 +101,14 @@ namespace LinqForXML
                         "Муж."
                     ),
                     "Список начальников отдела мужского пола"
+                )
+            );
+            Console.WriteLine(
+                new EmployeeFormatAnswer(
+                    new QrEmployees(
+                        new XmlEmployee(employees)
+                    ).Fetch().Where(it => Convert.ToDouble(it.Element("salary")?.Value) >= 30000),
+                    "Список сотрудников с ЗП от 30000 руб."
                 )
             );
         }
