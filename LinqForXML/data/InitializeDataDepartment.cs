@@ -1,6 +1,6 @@
-﻿using LinqForXML.utils;
+﻿using LinqForXML.model;
 
-namespace LinqForXML.datas
+namespace LinqForXML.data
 {
     public class InitializeDataDepartment
     {

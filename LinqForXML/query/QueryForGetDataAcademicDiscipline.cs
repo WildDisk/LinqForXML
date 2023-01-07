@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using LinqForXML.datas;
-using LinqForXML.utils;
+using LinqForXML.data;
+using LinqForXML.model;
 
 namespace LinqForXML.queries
 {

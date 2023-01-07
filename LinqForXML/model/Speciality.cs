@@ -1,4 +1,4 @@
-﻿namespace LinqForXML.utils
+﻿namespace LinqForXML.model
 {
     public class Speciality
     {

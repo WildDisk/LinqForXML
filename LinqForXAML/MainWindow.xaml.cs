@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using LinqForXML.datas;
-using LinqForXML.utils;
+using LinqForXML.data;
+using LinqForXML.model;
 using Microsoft.VisualBasic;
 
 namespace LinqForXAML
@@ -12,7 +12,7 @@ namespace LinqForXAML
     /// Interaction logic for MainWindow.xMainWindow_OnLoadedry>
     public partial class MainWindow : Window
     {
-        private readonly Employee[] _employees = new InitializeDataEmployee().Employees();
+        private readonly Employee[] _employees = new EmployeeData().Employees();
 
         public MainWindow()
         {
@@ -23,7 +23,7 @@ namespace LinqForXAML
         {
             foreach (var employee in _employees)
             {
-                ListBoxProducts.Items.Add($"{employee.EmployeeId} - {employee.FirstName} {employee.LatName}");
+                ListBoxProducts.Items.Add($"{employee.EmployeeId} - {employee.FirstName} {employee.LastName}");
                 CbSex.Items.Add(employee.Sex);
                 CbSex.SelectedIndex = 0;
                 CbPosition.Items.Add(employee.Position);
@@ -51,7 +51,7 @@ namespace LinqForXAML
             foreach (var employee in employees)
                 str += string.Format(
                     $"{employee.FirstName} " +
-                    $"{employee.LatName} " +
+                    $"{employee.LastName} " +
                     $"{employee.Patronymic}: " +
                     $"{employee.Position}\n"
                 );
@@ -87,7 +87,7 @@ namespace LinqForXAML
             {
                 str += Strings.Format(
                     $"{employee.FirstName} " +
-                    $"{employee.LatName} " +
+                    $"{employee.LastName} " +
                     $"{employee.Patronymic} - " +
                     $"{employee.Position} | " +
                     $"{employee.Salary} руб.\n\n"
@@ -145,7 +145,7 @@ namespace LinqForXAML
             {
                 str += Strings.Format(
                     $"{employee.FirstName} " +
-                    $"{employee.LatName} " +
+                    $"{employee.LastName} " +
                     $"{employee.Patronymic} - " +
                     $"{employee.Position} | " +
                     $"{employee.Salary} руб.\n\n"

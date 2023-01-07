@@ -1,35 +1,25 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
-using LinqForXML.utils;
+using LinqForXML.model;
 
-namespace LinqForXML.xmlcreates
+namespace LinqForXML.xml
 {
-    public class XmlCreateDepartments
+    public class XmlEmployee : IXml
     {
         private readonly Employee[] _employees;
-        private readonly Department[] _departments;
-
-        internal XmlCreateDepartments(Employee[] employees)
+        public XmlEmployee(Employee[] employees)
         {
             _employees = employees;
         }
 
-        internal XmlCreateDepartments(Department[] departments)
-        {
-            _departments = departments;
-        }
-
-        /// <summary>
-        /// Конструктор xml файла по сотрудникам
-        /// </summary>
-        public void GenerateXml()
+        public IEnumerable<XElement> Create()
         {
             var xmlData = _employees.Select(e =>
                 new XElement("employee",
                     new XAttribute("id", e.EmployeeId),
                     new XElement("personal",
-                        new XElement("last_name", e.LatName),
+                        new XElement("last_name", e.LastName),
                         new XElement("first_name", e.FirstName),
                         new XElement("patronymic", e.Patronymic),
                         new XElement("sex", e.Sex)
@@ -47,22 +37,7 @@ namespace LinqForXML.xmlcreates
             XDocument xDocument = new XDocument();
             xDocument.Add(rootElement);
             xDocument.Save("employee.xml");
-        }
-
-        /// <summary>
-        /// Конструктор временного xml для работы с join
-        /// </summary>
-        public XElement GenerateTmpXml()
-        {
-            var departments = _departments.Select(d =>
-                new XElement("department",
-                    new XAttribute("id", d.DepartmentId),
-                    new XElement("department_name", d.DepartmentName),
-                    new XElement("employee_places", d.EmployeePlaces)
-                )
-            );
-            XElement tmpDoc = new XElement("departments", departments);
-            return tmpDoc;
+            return XDocument.Load("employee.xml").Descendants("employee");
         }
     }
 }

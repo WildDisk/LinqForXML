@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using LinqForXML.datas;
-using LinqForXML.utils;
+using LinqForXML.data;
+using LinqForXML.model;
 using LinqForXML.xmlcreates;
 
 namespace LinqForXML.queries

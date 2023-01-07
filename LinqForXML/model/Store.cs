@@ -1,4 +1,4 @@
-﻿namespace LinqForXML.utils
+﻿namespace LinqForXML.model
 {
     /// <summary>
     /// Описание свойств магазина

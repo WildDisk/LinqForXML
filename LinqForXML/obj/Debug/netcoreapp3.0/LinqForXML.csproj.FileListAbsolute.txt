@@ -9,3 +9,17 @@ C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\Li
 C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.AssemblyInfo.cs
 C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.dll
 C:\Users\WildDisk\RiderProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.pdb
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.exe
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.deps.json
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.runtimeconfig.json
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.runtimeconfig.dev.json
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.dll
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\bin\Debug\netcoreapp3.0\LinqForXML.pdb
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.csproj.AssemblyReference.cache
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.AssemblyInfoInputs.cache
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.AssemblyInfo.cs
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.csproj.CoreCompileInputs.cache
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.dll
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.pdb
+C:\Users\WildDisk\IdeaProjects\LinqForXML\LinqForXML\obj\Debug\netcoreapp3.0\LinqForXML.genruntimeconfig.cache
