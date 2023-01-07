@@ -104,7 +104,7 @@ namespace LinqForXAML
         private void Button4_OnClick(object sender, RoutedEventArgs e)
         {
             string str = "";
-            Department[] departments = new InitializeDataDepartment().Departments();
+            Department[] departments = new DepartmentData().Departments();
             var positions = _employees
                 .Join(
                     departments,

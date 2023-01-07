@@ -4,6 +4,7 @@ using LinqForXML.data;
 using LinqForXML.format_answer;
 using LinqForXML.model;
 using LinqForXML.query;
+using LinqForXML.query.department;
 using LinqForXML.query.employee;
 using LinqForXML.xml;
 
@@ -13,7 +14,6 @@ namespace LinqForXML
     {
         static void Main()
         {
-            Console.Title = "Выполнение запросов LINQ к массиву обьектнов";
             #region OldLINQ
 
             // Product[] itemInStock = new InitializeDataProduct().InitializeDataProducts();
@@ -62,21 +62,20 @@ namespace LinqForXML
 //             
 //             Console.WriteLine("\n******* Результаты запросов LINQ из XML *******\n");
 //             
-             // new XmlCreateDepartments(employees).GenerateXml();
+             // new XmlCreateDepartments(new EmployeeData().Employees()).GenerateXml();
              // XDocument xDocumentEmployee = XDocument.Load("employee.xml");
 //             
 //             new QueryForGetEmployee(xDocumentEmployee).All();
-             // new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithBirthday("1986.01.22");
+            // new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithBirthday("1986.01.22");
 //             new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithSexAndPosition("Муж.", "Начальник отдела");
 //             new QueryForGetEmployee(xDocumentEmployee).FindEmployeeWithMoreSalary(25000);
-//             new QueryForGetEmployee(xDocumentEmployee).ListPositionsWithDepartmentName();
+             // new QueryForGetEmployee(xDocumentEmployee).ListPositionsWithDepartmentName();
 //             new QueryForGetEmployee(xDocumentEmployee).FindEmployeeSmallerSalary(30000);
 //             #endregion
 
             // new XmlCreateDepartments(employees).GenerateXml();
             // XDocument xDocumentEmployee = XDocument.Load("employee.xml");
             #endregion
-
             Employee[] employees = new EmployeeData().Employees();
             Console.WriteLine(
                 new EmployeeFormatAnswer(
@@ -84,8 +83,8 @@ namespace LinqForXML
                         new QrEmployees(
                             new XmlEmployee(employees)
                         ),
-                        // new DateTime(1986, 01, 22)
-                        "1981.11.11"
+                        new DateTime(1986, 01, 22)
+                        // "1981.11.11"
                     ),
                     "Список сотрудников с датой рождения 1986.01.22"
                 )
@@ -114,12 +113,32 @@ namespace LinqForXML
             );
             Console.WriteLine(
                 new EmployeeFormatAnswer(
-                    new QrMore(
+                    new QrMoreOrEqual(
                         new XmlEmployee(employees),
                         "salary",
-                        29999.99
+                        30000
                     ),
                     "Список сотрудников с ЗП от 30000 руб."
+                )
+            );
+            Console.WriteLine(
+                new EmployeeFormatAnswer(
+                    new QrLess(
+                        new XmlEmployee(employees),
+                        "salary",
+                        30000.01
+                    ),
+                    "Список сотрудников с ЗП до 30000 руб."
+                )
+            );
+            Console.WriteLine(
+                new DepartmentFormatAnswer(
+                    new QrDepartment(
+                        new XmlDepartment(
+                            new DepartmentData().Departments()
+                        )
+                    ),
+                    "Количество мест в отделах"
                 )
             );
         }

@@ -116,7 +116,7 @@ namespace LinqForXML.queries
         /// </summary>
         public void ListPositionsWithDepartmentName()
         {
-            Department[] departments = new InitializeDataDepartment().Departments();
+            Department[] departments = new DepartmentData().Departments();
             XElement departmentXml = new XmlCreateDepartments(departments).GenerateTmpXml();
             Console.WriteLine("\n4. Список должностей с указанием отдела");
             if (_employee != null)

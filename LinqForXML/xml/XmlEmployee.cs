@@ -33,9 +33,8 @@ namespace LinqForXML.xml
                     )
                 )
             );
-            XElement rootElement = new XElement("employees", xmlData);
             XDocument xDocument = new XDocument();
-            xDocument.Add(rootElement);
+            xDocument.Add(new XElement("employees", xmlData));
             xDocument.Save("employee.xml");
             return XDocument.Load("employee.xml").Descendants("employee");
         }
