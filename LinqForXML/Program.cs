@@ -3,6 +3,7 @@ using System.Linq;
 using LinqForXML.data;
 using LinqForXML.format_answer;
 using LinqForXML.model;
+using LinqForXML.query;
 using LinqForXML.query.employee;
 using LinqForXML.xml;
 
@@ -108,6 +109,16 @@ namespace LinqForXML
                     new QrEmployees(
                         new XmlEmployee(employees)
                     ).Fetch().Where(it => Convert.ToDouble(it.Element("salary")?.Value) >= 30000),
+                    "Список сотрудников с ЗП от 30000 руб."
+                )
+            );
+            Console.WriteLine(
+                new EmployeeFormatAnswer(
+                    new QrMore(
+                        new XmlEmployee(employees),
+                        "salary",
+                        29999.99
+                    ),
                     "Список сотрудников с ЗП от 30000 руб."
                 )
             );
