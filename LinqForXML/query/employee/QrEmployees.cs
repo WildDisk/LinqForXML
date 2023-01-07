@@ -27,7 +27,7 @@ namespace LinqForXML.query.employee
 
         public IEnumerable<XElement> Fetch()
         {
-            return _xdEmployees.Select(employee => employee);
+            return _xdEmployees;
         }
 
         public override string ToString()
