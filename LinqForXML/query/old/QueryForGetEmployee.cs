@@ -6,7 +6,7 @@ using LinqForXML.data;
 using LinqForXML.model;
 using LinqForXML.xml.old;
 
-namespace LinqForXML.query.odl
+namespace LinqForXML.query.old
 {
     public class QueryForGetEmployee
     {

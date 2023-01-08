@@ -3,7 +3,7 @@ using System.Linq;
 using LinqForXML.data;
 using LinqForXML.model;
 
-namespace LinqForXML.query.odl
+namespace LinqForXML.query.old
 {
     public class QueryForGetDataAcademicDiscipline
     {
