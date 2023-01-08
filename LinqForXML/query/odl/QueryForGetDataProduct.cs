@@ -3,7 +3,7 @@ using System.Linq;
 using LinqForXML.data;
 using LinqForXML.model;
 
-namespace LinqForXML.queries
+namespace LinqForXML.query.odl
 {
     /// <summary>
     /// Описание методов для получение данных по товарам

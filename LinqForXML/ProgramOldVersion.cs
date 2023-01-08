@@ -2,8 +2,8 @@
 using System.Xml.Linq;
 using LinqForXML.data;
 using LinqForXML.model;
-using LinqForXML.queries;
-using LinqForXML.xmlcreates;
+using LinqForXML.query.odl;
+using LinqForXML.xml.old;
 
 namespace LinqForXML
 {

@@ -4,9 +4,9 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using LinqForXML.data;
 using LinqForXML.model;
-using LinqForXML.xmlcreates;
+using LinqForXML.xml.old;
 
-namespace LinqForXML.queries
+namespace LinqForXML.query.odl
 {
     public class QueryForGetEmployee
     {

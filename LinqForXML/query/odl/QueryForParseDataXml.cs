@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml.Linq;
 
-namespace LinqForXML.queries
+namespace LinqForXML.query.odl
 {
     public class QueryForParseDataXml
     {

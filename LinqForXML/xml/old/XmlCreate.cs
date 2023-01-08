@@ -3,7 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using LinqForXML.model;
 
-namespace LinqForXML.xmlcreates
+namespace LinqForXML.xml.old
 {
     public class XmlCreate
     {
