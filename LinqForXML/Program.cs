@@ -6,6 +6,7 @@ using LinqForXML.model;
 using LinqForXML.query;
 using LinqForXML.query.department;
 using LinqForXML.query.employee;
+using LinqForXML.query.product;
 using LinqForXML.xml;
 
 namespace LinqForXML
@@ -77,6 +78,8 @@ namespace LinqForXML
             // XDocument xDocumentEmployee = XDocument.Load("employee.xml");
             #endregion
             Employee[] employees = new EmployeeData().Employees();
+            Department[] departments = new DepartmentData().Departments();
+            Product[] products = new ProductData().Products();
             Console.WriteLine(
                 new EmployeeFormatAnswer(
                     new QrBirthdayEmployee(
@@ -134,11 +137,34 @@ namespace LinqForXML
             Console.WriteLine(
                 new DepartmentFormatAnswer(
                     new QrDepartment(
-                        new XmlDepartment(
-                            new DepartmentData().Departments()
-                        )
+                        new XmlDepartment(departments)
                     ),
                     "Количество мест в отделах"
+                )
+            );
+            Console.WriteLine(
+                new ProductFormatAnswer(
+                    new QrOrderBy(
+                        new XmlProduct(products),
+                        "name"
+                    ),
+                    "Список продуктов отсортированный по наименованию"
+                )
+            );
+            Console.WriteLine(
+                new ProductFormatAnswer(
+                    new QrMoreOrEqual(
+                        new QrLessOrEqual(
+                            new QrProducts(
+                                new XmlProduct(products)
+                            ),
+                            "weight",
+                            500
+                        ),
+                        "weight",
+                        350
+                    ),
+                    "Продукты с весом от 350 до 500"
                 )
             );
         }

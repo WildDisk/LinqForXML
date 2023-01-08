@@ -6,12 +6,78 @@
     /// </summary>
     public class Product
     {
-        public string Name { get; set; }
-        public string ProducedBy { get; set; }
-        public int NumberInStock { get; set; }
-        public int Weight { get; set; }
-        public double Price { get; set; }
-        public string StoreId { get; set; }
+        public string Name { get; }
+        public string Manufacturer { get; }
+        public int NumberInStock { get; }
+        public double Weight { get; }
+        public double Price { get; }
+        public string StoreId { get; }
+
+        public Product(string name, string manufacturer, int numberInStock, double weight, double price, string storeId)
+        {
+            Name = name;
+            Manufacturer = manufacturer;
+            NumberInStock = numberInStock;
+            Weight = weight;
+            Price = price;
+            StoreId = storeId;
+        }
+        public class Builder
+        {
+            private string _name;
+            private string _manufacturer;
+            private int _numberInStock;
+            private double _weight;
+            private double _price;
+            private string _storeId;
+            public Builder Name(string name)
+            {
+                _name = name;
+                return this;
+            }
+
+            public Builder Manufacturer(string manufacturer)
+            {
+                _manufacturer = manufacturer;
+                return this;
+            }
+
+            public Builder NumberInStock(int numberInStock)
+            {
+                _numberInStock = numberInStock;
+                return this;
+            }
+
+            public Builder Weight(double weight)
+            {
+                _weight = weight;
+                return this;
+            }
+
+            public Builder Price(double price)
+            {
+                _price = price;
+                return this;
+            }
+
+            public Builder StoreId(string storeId)
+            {
+                _storeId = storeId;
+                return this;
+            }
+
+            public Product Build()
+            {
+                return new Product(
+                    name: _name,
+                    numberInStock: _numberInStock,
+                    manufacturer: _manufacturer,
+                    weight: _weight,
+                    price: _price,
+                    storeId: _storeId
+                );
+            }
+        }
 
         /// <summary>
         /// Переопределение ToString для вывода информации об объектах
@@ -21,7 +87,7 @@
         {
             return string.Format(
                 $"Наименование: {Name}\n" +
-                $"Производитель: {ProducedBy}\n" +
+                $"Производитель: {Manufacturer}\n" +
                 $"Количество = {NumberInStock} шт.\n" +
                 $"Вес = {Weight} гр.\n" +
                 $"Цена = {Price:f2} руб.\n" +

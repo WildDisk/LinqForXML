@@ -76,7 +76,7 @@ namespace LinqForXML.queries
             if (_product != null)
             {
                 var altaiNames = _product
-                    .Where(product => product.ProducedBy == "ООО Алтайпродукт" && product.Price < 80)
+                    .Where(product => product.Manufacturer == "ООО Алтайпродукт" && product.Price < 80)
                     .Select(product => product.Name);
                 foreach (var an in altaiNames)
                 {
@@ -126,7 +126,7 @@ namespace LinqForXML.queries
             if (_product != null)
             {
                 var prAltaiPrice = _product
-                    .Where(product => product.ProducedBy == "ООО Алтайпродукт")
+                    .Where(product => product.Manufacturer == "ООО Алтайпродукт")
                     .Select(product => product.Price);
                 var altaiPrice = prAltaiPrice.ToList();
                 Console.WriteLine(
@@ -175,7 +175,7 @@ namespace LinqForXML.queries
         public void GetNameMaker()
         {
             Console.WriteLine("\n10. Наименования товаров, сгруппированные по производителям: ");
-            var groups = _product.GroupBy(product => product.ProducedBy);
+            var groups = _product.GroupBy(product => product.Manufacturer);
             foreach (var group in groups)
             {
                 Console.WriteLine($"Товары фирмы {group.Key}: ");
@@ -192,7 +192,7 @@ namespace LinqForXML.queries
             Console.WriteLine("\n11. Наименования и количество товаров фирм ОАО Балтпром\n" +
                               "или ЗАО Увелка с указанием данных по стелажам, на которых они хранятся: ");
             var result = _product
-                .Where(product => product.ProducedBy == "ОАО Балтпром" || product.ProducedBy == "ЗАО Увелка")
+                .Where(product => product.Manufacturer == "ОАО Балтпром" || product.Manufacturer == "ЗАО Увелка")
                 .Join(stores, product => product.StoreId, store => store.StoreId,
                     (product, store) => new
                     {

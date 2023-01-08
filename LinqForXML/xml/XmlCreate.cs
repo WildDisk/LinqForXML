@@ -73,7 +73,7 @@ namespace LinqForXML.xmlcreates
                         new XAttribute("id", random.Next()),
                         new XAttribute("numberInStock", p.NumberInStock),
                         new XElement("name", p.Name),
-                        new XElement("make", p.ProducedBy),
+                        new XElement("make", p.Manufacturer),
                         new XElement("weight", p.Weight,
                             new XAttribute("unit", "г.")
                         ),
