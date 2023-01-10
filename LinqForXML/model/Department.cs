@@ -13,7 +13,7 @@
             EmployeePlaces = employeePlaces;
         }
         
-        public class Builder
+        internal class Builder
         {
             private long _departmentId;
             private string _departmentName;

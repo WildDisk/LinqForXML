@@ -12,7 +12,7 @@ namespace LinqForXML
         static void MainOld()
         {
             Product[] itemInStock = new ProductData().Products(); // new InitializeDataProduct().InitializeDataProducts();
-            AcademicDiscipline[] academicDisciplines = new InitializeDataAcademicDiscipline().Disciplines();
+            AcademicDiscipline[] academicDisciplines = new AcademicDisciplineData().Disciplines();
             XDocument xDocument = XDocument.Load("komUslugi.xml");
 
 

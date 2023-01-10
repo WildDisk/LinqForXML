@@ -188,7 +188,7 @@ namespace LinqForXML.query.old
 
         public void GetProdBaltprom()
         {
-            Store[] stores = new InitializeDataStore().InitializeDataStores();
+            Store[] stores = new StoreData().Stores();
             Console.WriteLine("\n11. Наименования и количество товаров фирм ОАО Балтпром\n" +
                               "или ЗАО Увелка с указанием данных по стелажам, на которых они хранятся: ");
             var result = _product

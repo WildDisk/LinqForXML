@@ -133,7 +133,7 @@ namespace LinqForXML.query.old
         /// </summary>
         public void DisciplineSemesterSpecialityFaculty()
         {
-            Speciality[] specialities = new InitializeDataSpeciality().Specialities();
+            Speciality[] specialities = new SpecialityData().Specialities();
             Console.WriteLine($"\n7. Названия дисциплин и семестров по специальностям в факультетах");
             var result = _discipline
                 .Join(

@@ -28,7 +28,7 @@ namespace LinqForXML.model
             DepartmentId = departmentId;
         }
 
-        public class Builder
+        internal class Builder
         {
             private long _employeeId;
             private string _lastName;

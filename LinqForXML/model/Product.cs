@@ -22,7 +22,7 @@
             Price = price;
             StoreId = storeId;
         }
-        public class Builder
+        internal class Builder
         {
             private string _name;
             private string _manufacturer;
