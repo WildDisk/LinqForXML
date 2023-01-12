@@ -7,30 +7,30 @@ using LinqForXML.xml;
 
 namespace LinqForXML.format_answer
 {
-    public class ProductFormatAnswer
+    public class FaProduct
     {
         private readonly IEnumerable<XElement> _xElements;
         private readonly string _comment;
 
-        public ProductFormatAnswer(IQuery query, string comment)
+        public FaProduct(IQuery query, string comment)
         {
             _xElements = query.Fetch();
             _comment = comment;
         }
         
-        public ProductFormatAnswer(IXml xml, string comment)
+        public FaProduct(IXml xml, string comment)
         {
             _xElements = xml.Create();
             _comment = comment;
         }
 
-        public ProductFormatAnswer(XDocument document, string descendants, string comment)
+        public FaProduct(XDocument document, string descendants, string comment)
         {
             _xElements = document.Descendants(descendants);
             _comment = comment;
         }
         
-        public ProductFormatAnswer(IEnumerable<XElement> elements, string comment)
+        public FaProduct(IEnumerable<XElement> elements, string comment)
         {
             _xElements = elements;
             _comment = comment;

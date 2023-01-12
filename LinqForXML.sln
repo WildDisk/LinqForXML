@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqForXML", "LinqForXML\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqForXAML", "LinqForXAML\LinqForXAML.csproj", "{671B7C27-12E8-4C02-A56E-8A8BA3BA0276}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTest", "LinqTest\LinqTest.csproj", "{27D45134-F563-491C-8912-6854149D274D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{671B7C27-12E8-4C02-A56E-8A8BA3BA0276}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{671B7C27-12E8-4C02-A56E-8A8BA3BA0276}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{671B7C27-12E8-4C02-A56E-8A8BA3BA0276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D45134-F563-491C-8912-6854149D274D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D45134-F563-491C-8912-6854149D274D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D45134-F563-491C-8912-6854149D274D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D45134-F563-491C-8912-6854149D274D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

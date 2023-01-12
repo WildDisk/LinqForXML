@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using LinqForXML.xml;
 
 namespace LinqForXML.query.employee
 {
@@ -13,6 +14,12 @@ namespace LinqForXML.query.employee
         public QrSexEmployee(IQuery query, string sex)
         {
             _xdEmployees = query.Fetch();
+            _sex = sex;
+        }
+
+        public QrSexEmployee(IXml xml, string sex)
+        {
+            _xdEmployees = xml.Create();
             _sex = sex;
         }
 

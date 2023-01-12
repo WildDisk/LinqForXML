@@ -6,6 +6,7 @@
     /// </summary>
     public class Product
     {
+        public long Id { get;  }
         public string Name { get; }
         public string Manufacturer { get; }
         public int NumberInStock { get; }
@@ -13,8 +14,10 @@
         public double Price { get; }
         public string StoreId { get; }
 
-        public Product(string name, string manufacturer, int numberInStock, double weight, double price, string storeId)
+        public Product(long id, string name, string manufacturer, int numberInStock, double weight, double price, 
+            string storeId)
         {
+            Id = id;
             Name = name;
             Manufacturer = manufacturer;
             NumberInStock = numberInStock;
@@ -24,12 +27,19 @@
         }
         internal class Builder
         {
+            private long _id;
             private string _name;
             private string _manufacturer;
             private int _numberInStock;
             private double _weight;
             private double _price;
             private string _storeId;
+
+            public Builder Id(long id)
+            {
+                _id = id;
+                return this;
+            }
             public Builder Name(string name)
             {
                 _name = name;
@@ -69,6 +79,7 @@
             public Product Build()
             {
                 return new Product(
+                    id: _id,
                     name: _name,
                     numberInStock: _numberInStock,
                     manufacturer: _manufacturer,

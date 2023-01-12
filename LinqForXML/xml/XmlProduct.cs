@@ -18,12 +18,12 @@ namespace LinqForXML.xml
         {
             var products = _products.Select(p => 
                 new XElement("product",
-                    new XAttribute("id", new Random().Next()),
+                    new XAttribute("id", p.Id),
                     new XAttribute("numberInStock", p.NumberInStock),
                     new XElement("name", p.Name),
                     new XElement("manufacturer", p.Manufacturer),
                     new XElement("weight", p.Weight,
-                        new XAttribute("unit", "г. ")
+                        new XAttribute("unit", "г.")
                     ),
                     new XElement("price", p.Price,
                         new XAttribute("unit", "руб.")

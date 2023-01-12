@@ -15,7 +15,7 @@ namespace LinqForXML.xml
 
         public IEnumerable<XElement> Create()
         {
-            var xmlData = _employees.Select(e =>
+            IEnumerable<XElement> xmlData = _employees.Select(e =>
                 new XElement("employee",
                     new XAttribute("id", e.EmployeeId),
                     new XElement("personal",
@@ -33,10 +33,10 @@ namespace LinqForXML.xml
                     )
                 )
             );
-            XDocument xDocument = new XDocument();
-            xDocument.Add(new XElement("employees", xmlData));
-            xDocument.Save("employee.xml");
-            return XDocument.Load("employee.xml").Descendants("employee");
+            // XDocument xDocument = new XDocument();
+            // xDocument.Add(xmlData);
+            // xDocument.Save("employee.xml");
+            return xmlData;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using LinqForXML.xml;
 
 namespace LinqForXML.query.employee
 {
@@ -15,6 +16,13 @@ namespace LinqForXML.query.employee
             _xdEmployees = query.Fetch();
             _position = position;
         }
+
+        public QrPositionEmployee(IXml xml, string position)
+        {
+            _xdEmployees = xml.Create();
+            _position = position;
+        }
+
         public QrPositionEmployee(XDocument document, string position)
         {
             _xdEmployees = document.Descendants("employee");

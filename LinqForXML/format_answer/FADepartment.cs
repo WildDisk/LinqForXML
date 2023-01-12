@@ -7,24 +7,24 @@ using LinqForXML.xml;
 
 namespace LinqForXML.format_answer
 {
-    public class DepartmentFormatAnswer
+    public class FADepartment
     {
         private readonly IEnumerable<XElement> _xElements;
         private readonly string _comment;
 
-        public DepartmentFormatAnswer(IQuery query, string comment)
+        public FADepartment(IQuery query, string comment)
         {
             _xElements = query.Fetch();
             _comment = comment;
         }
         
-        public DepartmentFormatAnswer(IXml xml, string comment)
+        public FADepartment(IXml xml, string comment)
         {
             _xElements = xml.Create();
             _comment = comment;
         }
         
-        public DepartmentFormatAnswer(IEnumerable<XElement> elements, string comment)
+        public FADepartment(IEnumerable<XElement> elements, string comment)
         {
             _xElements = elements;
             _comment = comment;

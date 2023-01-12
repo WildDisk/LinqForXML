@@ -2,9 +2,10 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>netcoreapp7.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
         <RootNamespace>LinqForXAML</RootNamespace>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
     </PropertyGroup>
 
     <ItemGroup>

@@ -8,6 +8,7 @@ using LinqForXML.query.department;
 using LinqForXML.query.employee;
 using LinqForXML.query.product;
 using LinqForXML.xml;
+using LinqForXML.xml.xdoc;
 
 namespace LinqForXML
 {
@@ -19,7 +20,7 @@ namespace LinqForXML
             Department[] departments = new DepartmentData().Departments();
             Product[] products = new ProductData().Products();
             Console.WriteLine(
-                new EmployeeFormatAnswer(
+                new FAEmployee(
                     new QrBirthdayEmployee(
                         new QrEmployees(
                             new XmlEmployee(employees)
@@ -31,7 +32,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new EmployeeFormatAnswer(
+                new FAEmployee(
                     new QrSexEmployee(
                         new QrPositionEmployee(
                             new QrEmployees(
@@ -45,7 +46,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new EmployeeFormatAnswer(
+                new FAEmployee(
                     new QrEmployees(
                         new XmlEmployee(employees)
                     ).Fetch().Where(it => Convert.ToDouble(it.Element("salary")?.Value) >= 30000),
@@ -53,7 +54,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new EmployeeFormatAnswer(
+                new FAEmployee(
                     new QrMoreOrEqual(
                         new XmlEmployee(employees),
                         "salary",
@@ -63,7 +64,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new EmployeeFormatAnswer(
+                new FAEmployee(
                     new QrLess(
                         new XmlEmployee(employees),
                         "salary",
@@ -73,7 +74,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new DepartmentFormatAnswer(
+                new FADepartment(
                     new QrDepartment(
                         new XmlDepartment(departments)
                     ),
@@ -81,7 +82,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new ProductFormatAnswer(
+                new FaProduct(
                     new QrOrderBy(
                         new XmlProduct(products),
                         "name"
@@ -90,7 +91,7 @@ namespace LinqForXML
                 )
             );
             Console.WriteLine(
-                new ProductFormatAnswer(
+                new FaProduct(
                     new QrMoreOrEqual(
                         new QrLessOrEqual(
                             new QrProducts(
@@ -104,6 +105,13 @@ namespace LinqForXML
                     ),
                     "Продукты с весом от 350 до 500"
                 )
+            );
+            Console.WriteLine(
+                new XmlXDocument(
+                    new XmlProduct(products),
+                    "product.xml",
+                    "products"
+                ).Create()
             );
         }
     }

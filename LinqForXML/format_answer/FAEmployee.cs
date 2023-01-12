@@ -6,18 +6,18 @@ using LinqForXML.query;
 
 namespace LinqForXML.format_answer
 {
-    public class EmployeeFormatAnswer
+    public class FAEmployee
     {
         private readonly IEnumerable<XElement> _xElements;
         private readonly string _comment;
 
-        public EmployeeFormatAnswer(IQuery query, string comment)
+        public FAEmployee(IQuery query, string comment)
         {
             _xElements = query.Fetch();
             _comment = comment;
         }
 
-        public EmployeeFormatAnswer(IEnumerable<XElement> elements, string comment)
+        public FAEmployee(IEnumerable<XElement> elements, string comment)
         {
             _xElements = elements;
             _comment = comment;
